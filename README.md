@@ -16,7 +16,9 @@ docker-compose up -d
 127.0.0.1:8000
 
 # Django migrations:
-Type `docker-compose exec` django bash in your bash to enter the python django bash.
+
+
+Type `docker-compose exec django bash` in your bash to enter the python django bash.
 
 Now run the migrations like so
 

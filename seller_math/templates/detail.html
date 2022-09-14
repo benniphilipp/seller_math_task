@@ -1,0 +1,33 @@
+{% extends "basic.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>list View</h1>
+    
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>zip</th>
+                <th>summe</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>zip</th>
+                <th>summe</th>
+            </tr>
+        </tfoot>
+        {%for row in csv_data %}
+        <tbody>
+            <tr>
+                <td>{{row.zip}}</td>
+                <td>{{row.summe}}</td>
+            </tr>
+        </tbody>
+        {%endfor%}
+    </table>
+
+</div>
+
+{% endblock %}

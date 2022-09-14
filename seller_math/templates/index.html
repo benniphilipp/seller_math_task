@@ -2,16 +2,26 @@
 
 {% block content %}
 
+<div class="container">
+    <form method="post" enctype="multipart/form-data" class="mt-3">
+        {% csrf_token %}
+    {{form}}
+    <input class="mt-3" type="submit" name="submit" value="Upload" />
+    </form>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-{{form}}
-<input type="submit" name="submit" value="Upload" />
-</form>
-<table>
-<tr><th>zip</th><th>summe</th></tr>
-{%for row in csv_list %}
-<tr><td>{{row.zip}}</td><td>{{row.summe}}</td></tr>
-{%endfor%}
-</table>
+    <table class="table mt-3">
+        <tr>
+            <th scope="col">zip</th>
+            <th scope="col">summe</th>
+        </tr>
+
+        {%for row in csv_list %}
+        <tr>
+            <td scope="row"></td>>Zip: {{row.zip}}</td>
+            <td scope="row"></td>>Sum: {{row.summe}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+
+</div>
 {% endblock %}

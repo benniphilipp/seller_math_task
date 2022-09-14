@@ -20,8 +20,8 @@ def store_csv_data(csv_file):
     next(csv_data)  # Skip header row
 
     for counter, line in enumerate(csv_data):
-        shipping_address_zip = line[18]
-        total_price_with_shipping = line[7]
+        shipping_address_zip = line[17]
+        total_price_with_shipping = line[6]
         c = CsvSeller()
 
         c.zip = shipping_address_zip
