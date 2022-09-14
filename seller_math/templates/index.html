@@ -5,8 +5,13 @@
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-<input type="file" name="sent_file" />
+{{form}}
 <input type="submit" name="submit" value="Upload" />
 </form>
-
+<table>
+<tr><th>zip</th><th>summe</th></tr>
+{%for row in csv_list %}
+<tr><td>{{row.zip}}</td><td>{{row.summe}}</td></tr>
+{%endfor%}
+</table>
 {% endblock %}
