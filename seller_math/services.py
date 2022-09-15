@@ -2,6 +2,7 @@ import csv
 # from seller_math.views import decode_utf8
 from seller_math.models import CsvSeller
 import chardet
+from django.db.models.aggregates import Sum
 
 
 def decode_utf8(line_iterator):
@@ -27,3 +28,10 @@ def store_csv_data(csv_file):
         c.zip = shipping_address_zip
         c.summe = total_price_with_shipping
         c.save()
+
+
+def get_list_data(**kw):
+    sort_zip = CsvSeller.objects.values(
+        "zip").annotate(summe=Sum('summe')).order_by("zip")
+    return sort_zip
+
