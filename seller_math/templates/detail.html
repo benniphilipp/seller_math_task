@@ -5,29 +5,53 @@
 <div class="container">
     <h1>list View</h1>
     
-    <table id="example" class="display" cellspacing="0" width="100%">
+    <table id="seller_data" class="display order-column" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>zip</th>
                 <th>summe</th>
             </tr>
         </thead>
+        <tbody>
+        {%for row in csv_data %}
+            <tr>
+                <td>{{row.zip}}</td>
+                <td>{{row.summe}}</td>
+            </tr>
+        
+        {%endfor%}
+        </tbody>
         <tfoot>
             <tr>
                 <th>zip</th>
                 <th>summe</th>
             </tr>
         </tfoot>
-        {%for row in csv_data %}
-        <tbody>
-            <tr>
-                <td>{{row.zip}}</td>
-                <td>{{row.summe}}</td>
-            </tr>
-        </tbody>
-        {%endfor%}
     </table>
 
 </div>
 
+{% endblock %}
+
+
+{% block extra_js_footer %}
+<script>
+ $(document).ready(function(){
+    $('#seller_data').dataTable({
+      order: [[0, 'asc'],[1, 'desc']],
+      "columnDefs": [
+          { "type": "numeric-comma", targets: 0 },
+          { "type": "numeric-comma", targets: 1 }
+      ],
+      "aoColumns": [{
+          "bSortable": true,
+          "mData": 0 // zip
+      }, {
+          
+          "bSortable": true,
+          "mData": 1 // sum
+      }, ],
+    });
+ });
+</script>
 {% endblock %}
